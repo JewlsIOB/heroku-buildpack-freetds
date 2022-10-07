@@ -1,4 +1,8 @@
 #!/bin/sh
 
-echo 'FreeTDS'
-exit 0
+if [ -f $1/vendor/freetds ]; then
+  echo "Free TDS is working"
+  exit 0
+else
+  exit 1
+fi
