@@ -47,7 +47,7 @@ echo '-----> Writing FreeTDS configuration for subsequent buildpack'
 echo "       Writing FreeTDS configuration..."
 mkdir -p "~/.profile.d"
 cat <<-EOF >> "~/.profile.d/freetds.sh"
-export PATH=$PATH:"~/vendor/bin"
+export PATH=$PATH:~/vendor/bin
 EOF
 echo "-----> test PATH"
 bash "~/.profile.d/freetds.sh"
