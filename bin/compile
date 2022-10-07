@@ -50,6 +50,6 @@ cat <<-EOF >> "~/.profile.d/freetds.sh"
 export PATH=$PATH:"~/vendor/bin"
 EOF
 echo "-----> test PATH"
-bash "~/.profile.d"
+bash "~/.profile.d/freetds.sh"
 echo $PATH
 echo "-----> Done with FreeTDS config!"
