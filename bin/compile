@@ -5,6 +5,9 @@ build_dir=$1
 cache_dir=$2
 env_dir=${3:-""}
 
+# reset build dir
+build_dir="/app"
+
 if [ -f "${env_dir}/FREETDS_SOURCE_URL" ]; then
   source_url=$(cat "${env_dir}/FREETDS_SOURCE_URL")
 else
@@ -19,7 +22,6 @@ curl "${source_url}" --silent -o - | tar -xz -C "${cache_dir}" -f - --strip-comp
 ls -al $cache_dir
 
 echo '-----> Configurating FreeTDS'
-mkdir -p "/app/vendor/freetds" # next line doesnt always seem to work
 mkdir -p "${build_dir}/vendor/freetds"
 pushd "${cache_dir}"
 ./configure "--prefix=${build_dir}/vendor/freetds" --with-libiconv-prefix=DIR --with-openssl=DIR --with-tdsver=7.3
