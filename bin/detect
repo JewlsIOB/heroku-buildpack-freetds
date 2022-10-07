@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -f $1/vendor/freetds ]; then
+if [ -f "#{$1}/vendor/freetds" ]; then
   echo "Free TDS is working"
   exit 0
 else

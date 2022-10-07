@@ -13,7 +13,7 @@ echo "env_dir: $env_dir"
 if [ -f "${env_dir}/FREETDS_SOURCE_URL" ]; then
   source_url=$(cat "${env_dir}/FREETDS_SOURCE_URL")
 else
-  source_url="ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.3.tar.gz"
+  source_url="ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.3.13.tar.gz"
 fi
 
 echo "-----> FreeTDS building in ${build_dir}"
@@ -26,7 +26,8 @@ ls -al $cache_dir
 echo '-----> Configurating FreeTDS'
 mkdir -p "${build_dir}/vendor/freetds"
 pushd "${cache_dir}"
-./configure "--prefix=${build_dir}/vendor/freetds" --with-libiconv-prefix=DIR --with-openssl=DIR --with-tdsver=7.3
+#./configure "--prefix=${build_dir}/vendor/freetds" --with-libiconv-prefix=DIR --with-openssl=DIR --with-tdsver=7.3
+./configure "--prefix=${build_dir}/vendor/freetds" --prefix="${build_dir}/vendor" --with-tdsver=7.3
 
 echo '-----> Building FreeTDS'
 make
@@ -40,6 +41,7 @@ make install
 #cp -r "${build_dir}/vendor/freetds" /app/vendor/freetds
 
 echo '-----> Writing FreeTDS configuration for subsequent buildpack'
+echo "Try making buildpack"
 mkdir -p "${build_dir}/.profile.d"
 cat <<-EOF >> "${build_dir}/.profile.d/freetds.sh"
 export FREETDS_DIR="${build_dir}/vendor/freetds"
