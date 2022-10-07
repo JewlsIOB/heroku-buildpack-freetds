@@ -46,9 +46,7 @@ make install
 echo '-----> Writing FreeTDS configuration for subsequent buildpack'
 mkdir -p "/app/.profile.d"
 cat <<-EOF >> "/app/.profile.d/freetds.sh"
-ls /app/vendor/bin
 export PATH=$PATH:$HOME/vendor/bin
-export PATH=$PATH:/app/vendor/bin
 echo "-----> made it here to the bash script"
 echo "       ${PATH}"
 EOF
@@ -56,5 +54,8 @@ echo "-----> test PATH"
 ls /app/.profile.d
 cat /app/.profile.d/freetds.sh
 bash /app/.profile.d/freetds.sh
+echo $PATH
+echo "-----> force PATH"
+export PATH=$PATH:$HOME/vendor/bin
 echo $PATH
 echo "-----> Done with FreeTDS config!"
