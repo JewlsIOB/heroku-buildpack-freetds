@@ -9,7 +9,7 @@ Compatible with Heroku-12 stage.
 Installation
 ----------------------
 ```bash
-heroku buildpacks:add --index 1 https://github.com/codeforamerica/heroku-buildpack-freetds.git
+heroku buildpacks:add --index 1 https://github.com/JewlsIOB/heroku-buildpack-freetds.git
 ```
 
 Configuration
@@ -17,4 +17,4 @@ Configuration
 This buildpack will read the value of one configuration variable:
 
 * **`FREETDS_SOURCE_URL`** - Path to a version of FreeTDS to install. Defaults to
-    `ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.tar.gz`
+    `ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.13.tar.gz`
