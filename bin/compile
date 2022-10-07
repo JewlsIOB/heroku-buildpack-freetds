@@ -5,6 +5,9 @@ build_dir=$1
 cache_dir=$2
 env_dir=${3:-""}
 
+# Just use ~
+build_dir=~
+
 # Echo directories
 echo "build dir: $build_dir"
 echo "cache dir: $cache_dir"
@@ -41,12 +44,12 @@ make install
 #cp -r "${build_dir}/vendor/freetds" /app/vendor/freetds
 
 echo '-----> Writing FreeTDS configuration for subsequent buildpack'
-echo "Writing FreeTDS configuration..."
-mkdir -p "${build_dir}/.profile.d"
-cat <<-EOF >> "${build_dir}/.profile.d/freetds.sh" "${build_dir}"
-export FREETDS_DIR="${1}/vendor/freetds"
-export PATH=$PATH:$FREETDS_DIR
+echo "       Writing FreeTDS configuration..."
+mkdir -p "~/.profile.d"
+cat <<-EOF >> "~/.profile.d/freetds.sh"
+export PATH=$PATH:"~/vendor/bin"
 EOF
-export FREETDS_DIR="${build_dir}/vendor/freetds"
-echo "${build_dir}/vendor/freetds" > "${env_dir}/FREETDS_DIR"
-echo "Done with FreeTDS config!"
+echo "-----> test PATH"
+bash "~/.profile.d"
+echo $PATH
+echo "-----> Done with FreeTDS config!"
