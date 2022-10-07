@@ -5,8 +5,10 @@ build_dir=$1
 cache_dir=$2
 env_dir=${3:-""}
 
-# reset build dir
-build_dir="/app"
+# Echo directories
+echo "build dir: $build_dir"
+echo "cache dir: $cache_dir"
+echo "env_dir: $env_dir"
 
 if [ -f "${env_dir}/FREETDS_SOURCE_URL" ]; then
   source_url=$(cat "${env_dir}/FREETDS_SOURCE_URL")
