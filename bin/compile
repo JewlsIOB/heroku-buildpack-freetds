@@ -50,6 +50,7 @@ export PATH=$PATH:$build_dir/vendor/bin
 EOF
 echo "-----> test PATH"
 ls /app/.profile.d
+cat /app/.profile.d/freetds.sh
 bash /app/.profile.d/freetds.sh
 echo $PATH
 echo "-----> Done with FreeTDS config!"
