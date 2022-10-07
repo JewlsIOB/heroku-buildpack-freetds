@@ -8,7 +8,7 @@ env_dir=${3:-""}
 if [ -f "${env_dir}/FREETDS_SOURCE_URL" ]; then
   source_url=$(cat "${env_dir}/FREETDS_SOURCE_URL")
 else
-  source_url="ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.13.tar.gz"
+  source_url="ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.3.tar.gz"
 fi
 
 echo "-----> FreeTDS building in ${build_dir}"
