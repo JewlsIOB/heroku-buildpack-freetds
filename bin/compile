@@ -6,6 +6,7 @@ cache_dir=$2
 env_dir=${3:-""}
 
 # Echo directories
+build_dir="/app" # TODO NOTE CHANGE
 echo "build dir: $build_dir"
 echo "cache dir: $cache_dir"
 echo "env_dir: $env_dir"
@@ -35,9 +36,9 @@ echo "-----> Installing FreeTDS into ${build_dir}/vendor/freetds"
 mkdir -p "${build_dir}/vendor/freetds"
 make install
 
-echo '-----> Copying FreeTDS into /app/vendor/freetds'
-mkdir -p "/app/vendor/freetds"
-cp -r "${build_dir}/vendor/freetds" /app/vendor/freetds
+#echo '-----> Copying FreeTDS into /app/vendor/freetds'
+#mkdir -p "/app/vendor/freetds"
+#cp -r "${build_dir}/vendor/freetds" /app/vendor/freetds
 
 echo '-----> Writing FreeTDS configuration for subsequent buildpack'
 mkdir -p "${build_dir}/.profile.d"
