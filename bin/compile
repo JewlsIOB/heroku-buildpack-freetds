@@ -44,12 +44,12 @@ make install
 #cp -r "${build_dir}/vendor/freetds" /app/vendor/freetds
 
 echo '-----> Writing FreeTDS configuration for subsequent buildpack'
-echo "       Writing FreeTDS configuration..."
 mkdir -p "~/.profile.d"
 cat <<-EOF >> "~/.profile.d/freetds.sh"
 export PATH=$PATH:~/vendor/bin
 EOF
 echo "-----> test PATH"
-bash "~/.profile.d/freetds.sh"
+ls ~/.profile.d
+bash ~/.profile.d/freetds.sh
 echo $PATH
 echo "-----> Done with FreeTDS config!"
